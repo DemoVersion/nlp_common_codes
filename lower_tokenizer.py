@@ -1,25 +1,8 @@
 import argparse
 import nltk
-import kenlm
+
 from nltk.stem.lancaster import LancasterStemmer
-def stem_tokens(tokens, stemmer):
-    stemmed = []
-    for item in tokens:
-        stemmed.append(stemmer.stem(item))
-    return stemmed
-def get_single_tokens(path):
-	with open(path) as tdata:
-		text=str(tdata.read())
-	lowers = text.lower()
-	tokens = nltk.word_tokenize(lowers)
-	return tokens
-def single_clean_input(path,stem_enabled):
-	tokens = get_single_tokens(path)
-	if stem_enabled:
-		stemmer = LancasterStemmer()
-		tokens=stem_tokens(tokens, stemmer)
-	fdata =' '.join(tokens)
-	return fdata
+
 def line_by_line(file_input,file_output):
 	line_id=0
 	with open(file_input, "r") as f_in:
